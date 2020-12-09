@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1>Name: {{provider.username}}</h1>
+<h1>Profession: {{provider.provider_type}}</h1>
+<h1>Provider Rating: {{provider.get_rating}}/5.0</h1>
+<h2>Centre Affiliations:</h2>
+{% if provider.centres %}
+	{% for centre in provider.centres %}
+		<li><a href="{{url_for('centre', name=centre.name)}}">{{centre.name}} - {{centre.ctype}}</a></li>
+	{% endfor %}
+{% else %}
+	<h2>No Registered Centre Affiliations</h1>
+{% endif %}
+
+{% if current_user.is_patient() %}
+<form method="POST">
+	<label>Your Rating: </label><input type="float" name="user_rating"/><br>
+	<input type="submit" value="Submit Rating">
+</form>
+{% endif %}
+
+{{message}}
+
+<br><br>
+<a href="{{ url_for('make_book', provider=provider.username) }}">Make Booking</a>
+
+{% endblock %}

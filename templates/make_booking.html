@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1> Make Booking: </h1>
+
+<form method="POST">
+	Health Provider: {{provider.username}} - {{provider.provider_type}}<br>
+	Date: <input type="date" name="bdate"><br>
+	Time: <input type="time" name="btime"><br>
+	Patient: {{patient}}<br>
+<textarea rows="4" cols="50" name="booking_msg" placeholder = "Reason for visit">
+</textarea><br>
+	<input type="submit">
+</form>
+
+<h1> {{message}} </h1>
+
+<a href ="{{ url_for('home') }}">Go Home</a>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1>Name: {{user.username}}</h1>
+<h1>Email: {{user.email}}</h1>
+<h1>Phone No: {{user.phone_no}}</h1>
+
+{% if user.is_provider() %}
+<h1>Profession: {{ user.provider_type }}</h1>
+<h1>Provider Number: {{ user.prov_num }}</h1>
+<h1>Rating: {{ user.get_rating }}/5.0</h1>
+<h2>Centre Affiliations:</h2>
+	{% if user.centres %}
+		{% for centre in user.centres %}
+			<li><a href="{{url_for('centre', name=centre.name)}}">{{centre.name}} - {{centre.ctype}}</a></li>
+		{% endfor %}
+	{% else %}
+		<h2>No Registered Centre Affiliations</h1>
+	{% endif %}
+{% endif %}
+
+{% if user.is_patient() %}
+<h1>Medicare Number: {{ user.medi_num }}</h1>
+{% endif %}
+
+<br><br>
+<a href="{{ url_for('edit_profile') }}">Edit My Profile</a>
+{% endblock %}

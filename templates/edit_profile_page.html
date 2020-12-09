@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1> Edit Profile </h1>
+<br>
+<form method="POST">
+	<label>Name (Warning: Changing usernames may destroy the backend): </label><input type="text" name='username' value='{{user.username}}'/><br>
+	<label>Email: </label><input type="text" name='email' value='{{user.email}}'/><br>
+	<label>Phone No: </label><input type="text" name='phone_no' value='{{user.phone_no}}'/><br>
+
+	{% if user.is_provider() %}
+		<label>Profession: </label><input type="text" name='prov_type' value='{{user.provider_type}}'/><br>
+		<label>Provider Number: </label><input type="text" name='prov_no' value='{{user.prov_num}}'/><br>
+		{% endif %}
+
+	{% if user.is_patient() %}
+	<label>Medicare Number: </label><input type="text" name='medi_num' value='{{user.medi_num}}'/><br>
+	{% endif %}
+<br><br>
+<input type="submit" value="Make Changes">
+</form>
+
+{{ message }}
+
+{% endblock %}

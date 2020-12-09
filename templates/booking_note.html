@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1> Booking Notes for {{booking.patient}} at {{booking.date}} - {{booking.time}}</h1><br>
+
+{{message}}
+
+{% if booking.prescriptions %}
+	<h1>Prescriptions:</h1>
+	{% for prescription in booking.prescriptions %}
+		<p>Prescription: {{ prescription.prescript }}</p>
+		<p>By: {{prescription.author}}</p>
+		<br>
+	{% endfor %}
+{% else %}
+	<h1>No Prescriptions</h1>
+{% endif %}
+<h1>Add Prescription</h1>
+<form action="{{ url_for('add_prescript', name=booking.patient, bdate=booking.date, btime=booking.time) }}" method="POST">
+	<textarea rows="1" cols="50" name="prescript" placeholder="Prescription Medication Name">
+</textarea><br>
+	<input type="submit">
+</form>
+
+
+{% if booking.notes %}
+	<h1>Notes:</h1>
+	{% for note in booking.notes %}
+		<p>Note: {{ note.note }}</p>
+		<p>By: {{note.author}}</p>
+		<br>
+	{% endfor %}
+{% else %}
+	<h1>No Notes</h1>
+{% endif %}
+<h1>Add Notes</h1>
+<form action="{{ url_for('add_note', name=booking.patient, bdate=booking.date, btime=booking.time) }}"" method="POST">
+	<textarea rows="1" cols="50" name="note" placeholder="Prescription Medication Name">
+</textarea><br>
+	<input type="submit">
+</form>
+
+<a href="{{url_for('home')}}">Go Home</a><br>
+
+{% endblock %}

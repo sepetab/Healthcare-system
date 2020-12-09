@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1>Search for Provider</h1>
+<form method='POST'>
+	<label>Name: </label><input name='name' value="{{ name }}"/><br>
+	<label>Profession: </label><input name='type' value="{{ type }}"/><br>
+	<input type="submit">
+</form>
+
+<ul>
+{% if providers %}
+	{% for provider in providers %}
+		<li><a href="{{url_for('provider', name=provider.username)}}">{{provider.username}} - {{provider.provider_type}} - {{provider.get_rating}}/5.0</a></li>
+	{% endfor %}
+{% else %}
+	<h1>No Provider Found Under Search</h1>
+{% endif %}
+
+</ul>
+{% endblock %}

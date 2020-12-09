@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>18s2 group project specification</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="comp-1531-group-project-18s2">COMP 1531 Group Project, 18s2</h1>
+<h3 id="aims">Aims:</h3>
+<p>The aim of this group project is to enable students to consolidate their knowledge in the fundamental principles of Software Engineering and apply the theoretical concepts to a “hands-on” software engineering problem. The project will enable students to:</p>
+<ul>
+<li>
+<p>Develop problem-solving skills to solve ‘real-world’ software engineering problems; analyse the problem domain, design and develop a solution to the problem</p>
+</li>
+<li>
+<p>Learn to work effectively as part of a team by managing your project, planning, and allocation of responsibilities among the members of your team</p>
+</li>
+<li>
+<p>Gain experience in collaborating through the use of a source control</p>
+</li>
+<li>
+<p>Apply appropriate design practices and methodologies in the development of their solution</p>
+</li>
+</ul>
+<h3 id="due-dates">Due Dates:</h3>
+<ul>
+<li>
+<p>Milestone 1: 11:59 PM Sunday 2nd September (Week 6) (Feedback: Week 6 Lab)</p>
+</li>
+<li>
+<p>Milestone 2: 09:59AM Monday 17th September (Week 9) (Feedback: Week 9 Lab)</p>
+</li>
+<li>
+<p>Final milestone: Final milestone: 09:59AM Monday 15th October (Week 11) (Demonstration: Week 12 Lab)</p>
+</li>
+<li>
+<p>Moodle Peer assessment: 11:55PM Sunday 21st October</p>
+</li>
+</ul>
+<h3 id="value-30">Value: 30%</h3>
+<h1 id="background">Background</h1>
+<p>Your consultancy firm has been called in to Australia’s largest healthcare enterprise, MediSoft, for a new software project. The client is interested in developing an online healthcare appointment management system (HAMS) that would streamline the process of patients booking healthcare appointments and general practitioners sending referrals to specialists. The client feels that such a system would help to market and increase the likelihood of attracting more customers to the health centres affiliated with MediSoft.</p>
+<h1 id="preliminary-requirements">Preliminary Requirements</h1>
+<p><strong>Health-Care Centres</strong></p>
+<p>The e-health system stores all health-care centres (which can be a hospital or a medical centre) that are affiliated with MediSoft and health-care providers working for these health-care centres. A health centre may employ one or more health providers, and consequently, the set of services provided by a health centre depends on the group of providers working for that centre.</p>
+<p><strong>User Types</strong></p>
+<p>The users of the proposed system can be grouped broadly into two categories, namely patients and health-care providers. Every user registered on the system has their full name, email address, and their phone number stored in the system. Patients additionally have their Medicare card number recorded as well, while health providers have their provider number stored on the system.</p>
+<p>Health-care providers can be further categorised by their professions, that is, the type of healthcare service they provide. For example, a provider may be classified as a general practitioner (GP), a pharmacist, a physiotherapist or a pathologist. Every health provider has exactly one health profession. A health provider may work for one or more health centres. Furthermore, different health providers may have different workings hours; and if a provider is affiliated with multiple centres, then the provider will have different working hours associated with each centre. (<em>You can assume that these hours do not conflict</em>)</p>
+<p>Every user registered on the e-health system can update their personal information through a profile page. For health-care providers, the profile page additionally displays their current rating and the health-centres they are associated with.</p>
+<p><strong>Patients</strong></p>
+<p><em><strong>Searching for a Healthcare Service to Book an Appointment</strong></em></p>
+<p>On the proposed system, the patients can search for a health provider or a health centre that suits their interest using the search engine provided. The search engine has the following options:</p>
+<ul>
+<li>
+<p>search for a particular health-care centre by their name (e.g., Garners Medical Centre)</p>
+</li>
+<li>
+<p>search for health-care centres by suburb (e.g., Kensington)</p>
+</li>
+<li>
+<p>search for a particular type of service (e.g., GP) (e.g., a search for a ‘GP’ service will list all the GPs currently registered on the system).</p>
+</li>
+<li>
+<p>search for health-care providers by their name (e.g., Jackson)</p>
+</li>
+</ul>
+<p>For any of the four search options, the search should not only return the exact matches but ‘near-matches’ also. For example, if there is a health centre called “Royal Randwick Hospital”, then it should be returned as a result of the patient searching for ‘centres by name’ with the keyword “royal rand”. Each entry of the search result should contain brief details about the centre/provider, and a link to the corresponding profile page.</p>
+<p><em><strong>Viewing Health Centre Profile</strong></em></p>
+<p>The profile page of a health centre should display details about the centre and its customer rating. Furthermore, there should be a list of all health providers working for the centre, categorised by the type of service they provide. For each provider, there should be a link to the provider’s profile as well as a button to proceed to booking an appointment with the provider at the centre.</p>
+<p><em><strong>Viewing Health Provider Profile</strong></em></p>
+<p>Similarly, the profile page of a health provider should display details about the health provider, including their average rating. Furthermore, the page should display a list of all affiliated health centres. For each centre, there should be a link to the centre’s profile, as well as a button to proceed to booking an appointment with the provider at the centre.</p>
+<p><em><strong>Booking an Appointment</strong></em></p>
+<p>Once the patient clicks a button to proceed onto booking an appointment, they should be presented with a form that consists of the following components.</p>
+<ul>
+<li>
+<p>A user-friendly widget that lets the patient select the time slots for the appointment. Every day is partitioned into 48 equally-sized time slots, each of which are 30 minutes long in length. The patient can select  <strong>available</strong>  time-slots e.g, [08:00-08:30]</p>
+</li>
+<li>
+<p>A section for the patient to optionally write a brief reason of visit, e.g. “I want to take a blood test”.</p>
+</li>
+</ul>
+<p>After selecting the time slots, the patient can click ‘book’ to finalise the booking. Once the patient has successfully booked the appointment, a confirmation is displayed to the user.</p>
+<p><em><strong>Provide Rating</strong></em></p>
+<p>Both health providers and health centres have an average rating that is displayed in the search results and their profiles. In addition to viewing profiles, patients should be able to rate any provider or centre registered on the HAMS. If a patient rates the same provider/centre more than once, only the patient’s most recent rating should count towards their overall average rating.</p>
+<p><em><strong>Viewing Appointments History</strong></em></p>
+<p>A patient should be able to view their own appointments history, a chronological list of their current appointments with the health providers on HAMS. Each entry on the list should contain links to the profile pages of the corresponding health provider and the corresponding health centre.</p>
+<p><strong>Health Providers</strong></p>
+<p><em><strong>Viewing Appointments History</strong></em></p>
+<p>Similarly, health providers should also have access to their own appointments history, a chronological list of all current appointments made by patients with the provider. Each entry on the list should contain a link to the corresponding patient’s profile page. On the patient’s profile page, the provider should be able to see details about the patient’s past history.</p>
+<p><em><strong>Viewing Patient History</strong></em></p>
+<p>Registered health-care providers will also be able to use the e-health system. A health-care provider is able to view all their patient appointments. During consultation with a patient, the health-care provider is able to:</p>
+<ul>
+<li>
+<p>record notes of the patient’s visit</p>
+</li>
+<li>
+<p>view the past history of the patient (i.e, notes taken at the previous visit).</p>
+</li>
+<li>
+<p>record any medication prescribed to the patient</p>
+</li>
+</ul>
+<p><strong>Login and Authentication</strong></p>
+<p>The HAMS must only be accessible by the pre-registered users, whose login credentials will be provided in  <code>csv</code>  files. Hence, no registration is required yet. Users should be able to log into the system with their email and password. Once a user has logged into the system, they should be granted access to the rest of the features in system already described above.</p>
+<h1 id="group-project-requirements">Group Project Requirements</h1>
+<h2 id="team-registration">Team Registration</h2>
+<p>For this project, you will need to organise yourself into teams of 4 (no more than 4), and all the team members must be from the same lab session. You will do this under the guidance of your tutor in the week 4 lab. While they will try to accommodate your preferences for teammates, they may have to make adjustments to ensure teams have 4 members.</p>
+<p>Once your team has been formed one member from the team will need to register it:</p>
+<ul>
+<li>
+<p>Go to  <a href="https://webcms3.cse.unsw.edu.au/static/uploads/course/COMP1531/18s2/39e61e4b336d2c0a39595d1a89f4ce37c88342645b5b1eece0266b703b67f51f/%5Bhttps://cgi.cse.unsw.edu.au/~cs1531/github/run.cgi/login%5D(https://cgi.cse.unsw.edu.au/~cs1531/github/run.cgi/login)">https://cgi.cse.unsw.edu.au/~cs1531/github/run.cgi/login</a>  and sign in</p>
+</li>
+<li>
+<p>Click on the ‘Group Work’ button. This will show you a form that you must fill out</p>
+</li>
+<li>
+<p>Select your tutorial from the left drop-down menu and think of a team name (do NOT use any emojis or similar special characters)</p>
+</li>
+<li>
+<p>Submit the form.</p>
+</li>
+<li>
+<p>Follow the link in the notification to add your other team members. This will create a team within the unsw-cs1531 GitHub organisation</p>
+</li>
+</ul>
+<p>Please ensure that your team is registered by end of week 4.</p>
+<h2 id="creation-of-team-repository">Creation of Team Repository</h2>
+<p>Each team will need to create a repository to collaborate on their group project. This can be done as follows:</p>
+<ul>
+<li>
+<p>Go to  <a href="https://webcms3.cse.unsw.edu.au/static/uploads/course/COMP1531/18s2/39e61e4b336d2c0a39595d1a89f4ce37c88342645b5b1eece0266b703b67f51f/%5Bhttps://cgi.cse.unsw.edu.au/~cs1531/github/run.cgi/login%5D(https://cgi.cse.unsw.edu.au/~cs1531/github/run.cgi/login)">https://cgi.cse.unsw.edu.au/~cs1531/github/run.cgi/login</a>  and sign in</p>
+</li>
+<li>
+<p>Click on the ‘Group Project’ button.</p>
+</li>
+<li>
+<p>Select your tutorial group (on the left drop-down menu) and your team (on the right drop-down menu)</p>
+</li>
+<li>
+<p>Click on Import</p>
+</li>
+</ul>
+<p>This will create a repository under the team and also load a set of  <code>csv</code>  files as listed below:</p>
+<ul>
+<li>
+<p><em>patient.csv</em>  - login credentials of patients</p>
+</li>
+<li>
+<p><em>provider.csv</em>  - login credentials of health-care providers</p>
+</li>
+<li>
+<p><em>health_centres.csv</em>  - list of health centres on the HAMS system</p>
+</li>
+<li>
+<p><em>provider_health_centres.csv</em>  - lists the health-centres that a provider works for</p>
+</li>
+</ul>
+<h2 id="implementation-guidelines">Implementation Guidelines</h2>
+<ul>
+<li>
+<p>Keeping mind that an Agile Software Development style has been chosen for this project, your team will be required to build and deliver the project in iterations. Each iteration will deliver a part of the requirements of the project during which the team members are expected to carry out all the SDLC activities, namely analysis, design, coding and testing. At the end of the iteration, you (as a team) will demonstrate to your lab class the functionality implemented during that iteration cycle. Your team must bear in mind that project requirements may be subject to change and enhancements to functionalities may be made at the end of the iteration. You will need to carefully design the solution for your current iteration, such that the solution is extensible to accommodate these changes. Deliverables for each iteration will be outlined at the start of each iteration cycle.</p>
+</li>
+<li>
+<p>For this iteration, no sophisticated authentication is required to be implemented. When the URL of the HAM system is specified, e.g.,  <a href="https://webcms3.cse.unsw.edu.au/static/uploads/course/COMP1531/18s2/39e61e4b336d2c0a39595d1a89f4ce37c88342645b5b1eece0266b703b67f51f/%5Bhttp://localhost:8080/hams%5D(http://localhost:8080/hams)">http://localhost:8080/hams</a>, this should launch a login page that prompts the user to enter their email and password</p>
+</li>
+<li>
+<p>For this iteration, any kind of persistence mechanism may be used (e.g., Python’s  <strong>pickle</strong>)</p>
+</li>
+<li>
+<p>This project must be designed using  <strong>object-oriented design</strong>  principles and implemented using  <strong>Python/Flask/Jinja2</strong>. It is recommended that students build their front-end using HTML and CSS only. If students choose to use other CSS frameworks (e.g. Material CSS, Bootstrap, etc.) to build the UI for the application then it must be kindly noted that support will be offered by course staff only on the core technology stack namely HTML, CSS, Python, Flask and Jinja2.</p>
+</li>
+<li>
+<p>To implement authentication, we strongly recommend that the “Flask Login” extension is used.</p>
+</li>
+<li>
+<p>All necessary artifacts for this project e.g., CSV file containing the emails and passwords will be available to you through your repository when you import the project (step b above)</p>
+</li>
+<li>
+<p>What has been provided to you is a problem statement; a set of high-level requirements from the customer. Your team must analyse the problem statement and go through a process of eliciting more formal requirements to develop the final set of user-stories and acceptance tests e.g., one of the requirements in the specification states – “Clicking on a particular GP should provide more details about the provider.” What details need to be displayed has not been elaborated. This must be elicited as part of your requirements analysis.</p>
+</li>
+<li>
+<p>The model solution demonstrated in the lectures was only a guide to demonstrate “one” possible way of implementing the customer’s requirements. You are required to design your solution and present in week 12.</p>
+</li>
+<li>
+<p>At the end of each deliverable (weeks 6, 9, &amp; 12) tutors will check the team’s GitHub repositories to ensure that all members of the team have contributed equally to the project and appropriate branches are created by each team member.</p>
+</li>
+</ul>
+<h2 id="log-book">Log Book</h2>
+<p>You are required to maintain a log book through the entire project that records:</p>
+<ul>
+<li>
+<p>date of regular, stand-up meetings</p>
+</li>
+<li>
+<p>summary of decisions made in stand-up meetings, requirements elicited and key design decisions (hand-written user-stories, CRC cards etc.)</p>
+</li>
+<li>
+<p>responsibilities allocated to each team member and tasks to be accomplished for the next meeting</p>
+</li>
+<li>
+<p>progress of tasks using a velocity chart (a hand-drawing will suffice, no sophisticated tool needed), summary of decisions made in stand-up meetings</p>
+</li>
+<li>
+<p>milestones achieved</p>
+</li>
+<li>
+<p>reflection if assigned tasks (decided from last meeting) have been achieved</p>
+</li>
+<li>
+<p>any obstacles</p>
+</li>
+</ul>
+<p>Marks will be awarded for the log book</p>
+<p><strong>Assessment</strong></p>
+<p>You will be assessed on your ability to apply what you have learnt in this course as well as your ability to work in a team and produce a significant piece of software. In cases where the client has not been explicit in their requirements, you will need to make your own design decisions with your team. It is important that you communicate regularly with your team members as well as document your design to avoid confusion about the choices you have made. You will keep a list of assumptions you have made and submit them as part of your final submission in your log book. You will also be asked to justify these decisions when you demonstrate in week 12.</p>
+<p>You are expected to use git appropriately by committing consistently and using feature branches to manage significant changes. It is an important part of this project for you (as a team) to manage your own time. You need to start early and work consistently: do not be overly optimistic about what you can achieve (remember you are all doing other courses with other assignments). It is essential for you as a team to monitor your own progress and it is often necessary to revise the plan as you progress.</p>
+<p>While it is up to you how to divide the work between you, all members must take on the developer role and work consistently throughout the project.</p>
+<p><em><strong>Each team member generally receives the same mark, but if the moodle peer assessment tool or the logs of your GitHub repository indicate an imbalance in the amount of work done, the total mark may be scaled to match actual contribution.</strong></em></p>
+<h2 id="group-project-scheduled-deliverables">Group Project Scheduled Deliverables</h2>
+<p>The planned dates for the different stages of the project deliverables are outlined below.</p>
+<ul>
+<li>
+<p>Week 6 Lab Session: User Stories Submission (15%)</p>
+</li>
+<li>
+<p>Week 9 Lab Session: Demonstration of iteration 1 (25%)</p>
+</li>
+<li>
+<p>Week 12 Lab Session: Final Group Project Demonstration (60%)</p>
+</li>
+</ul>
+<h3 id="week-6-lab-session-requirements-analysis-and-domain-modelling">Week 6 Lab Session: Requirements Analysis and Domain Modelling</h3>
+<p>Prior to your lab session, your team must schedule collaboration sessions, to have initial high-level visioning discussions during which you will brainstorm to identify epic stories from the customer requirements and their key features, break-down high-level user stories to smaller user-stories and detail each user story to identify key conditions of satisfaction, error-conditions etc. Based on the requirements analysis, produce a domain model as a UML class diagram. Your team is expected to produce:</p>
+<ul>
+<li>
+<p>High Level  <strong>Epic Stories</strong>  from the problem statement</p>
+</li>
+<li>
+<p>Each epic story broken into  <strong>user stories</strong>  – Each user-story must define:</p>
+<ul>
+<li>
+<p>a unique story identifier (e.g., UC1)</p>
+</li>
+<li>
+<p>a short description of the feature based on Role-Goal-Benefit template (Refer to the RGB model described in the lectures)</p>
+</li>
+<li>
+<p>an estimate for the implementation of the user story in user story points (e.g., UC1 = 2 User story points, where each point = 2.5 hours)</p>
+</li>
+<li>
+<p>priority of implementation</p>
+</li>
+</ul>
+</li>
+<li>
+<p>acceptance criteria for each user story (Refer to the 3 C’s model described in the lectures)</p>
+</li>
+<li>
+<p>Log book</p>
+</li>
+</ul>
+<p><strong>Please note, the above artifacts will need to be submitted using GIVE by week 6, Sunday 11:59 pm.</strong>  The submission guidelines for week 6 deliverables will be outlined over the next week.</p>
+<p><strong>Week 9 Lab Session: Demonstration of Iteration 1</strong></p>
+<ul>
+<li>
+<p>The code you wish to submit for this milestone should be in a branch named  <code>release</code>. You should not push to this branch after the deadline. Your tutor will check to make sure you have not done this. You may continue to push to other branches as you work on your project between the deadline and when you demonstrate to your tutor.</p>
+</li>
+<li>
+<p>UML  <strong>class diagram</strong>  that clearly shows:</p>
+<ul>
+<li>all classes with attributes, methods and right access modifiers</li>
+<li>relationships (inheritance, association, aggregation and composition).</li>
+<li>cardinality must also be indicated</li>
+</ul>
+</li>
+<li>
+<p>Your UML class diagram should be a PDF file at the root of your repository named  <code>design.pdf</code>.</p>
+</li>
+<li>
+<p>During this lab session, you will demonstrate the first iteration of your working software. For this first iteration, the customer has requested that they be able to see an instance of working software that meets some of the requirements outlined in the problem statement as outlined below:</p>
+</li>
+<li>
+<p>Allow a pre-registered user (patient or health-provider) to log into the system</p>
+</li>
+<li>
+<p>Enable a patient to do search (as described above), book an appointment with a particular health-care provider and view their current appointments</p>
+</li>
+<li>
+<p>View profile pages of health-care centres and health-care providers</p>
+</li>
+<li>
+<p>Health-care providers should be able to view their current appointments.</p>
+</li>
+</ul>
+<p>The clients have agreed that other functionality related to recording of medication prescribed to patients, recording patient history at each visit (i.e recording notes about the visit), maintaining history of past visits (i.e. being able to view past notes), are lower priority and can be viewed in the next iteration. The task for your team is to  <em><strong>select the necessary user-stories from the backlog of user-stories developed in week 6</strong></em>  and implement them to meet the customer’s goals. The additional document deliverables required for this iteration will be outlined later.</p>
+<p><strong>Week 12 Lab Session: Final Group Project presentation</strong></p>
+<p>Whatever you have in the  <code>release</code>  branch of your repository at the time of the deadline for this milestone will be considered your final submission. Include the following deliverables:</p>
+<ul>
+<li>
+<p>The complete working code for your application</p>
+</li>
+<li>
+<p>An up-to-date UML class diagram</p>
+</li>
+</ul>
+<p>You will demonstrate your application to your tut group in Week 12. You may be asked to justify your design decisions and explain how you worked as a team.</p>
+<h3 id="peer-assessment">Peer assessment</h3>
+<p>To ensure fair allocation of marks, you are required to complete a form on Moodle where you specify how much each team member contributed to the project and any comments you have about them. Information on how you can access this form will be released closer to Week 12.</p>
+</div>
+</body>
+
+</html>

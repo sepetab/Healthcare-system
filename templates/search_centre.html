@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1>Search for Centre</h1>
+<form method='POST'>
+	<label>Search: </label><input name='search' value='{{ search }}'/>
+	<select name="search_select">
+		<option value="name">Name</option>
+		<option value="ctype">Type</option>
+		<option value="postCode">Post Code</option>
+		<option value="suburb">Suburb</option>
+	</select>
+	<input type="submit">
+</form>
+
+<ul>
+{% if centres %}
+	{% for centre in centres %}
+		<li><a href="{{url_for('centre', name=centre.name)}}">{{centre.name}} - {{centre.ctype}} - {{centre.get_rating}}/5.0</a></li>
+	{% endfor %}
+{% else %}
+	<h1>No Centre Found Under Search</h1>
+{% endif %}
+</ul>
+{% endblock %}

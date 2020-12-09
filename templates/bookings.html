@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1> The bookings listed are: </h1>
+
+{% if bookings_list %}
+	{% for my_booking in bookings_list %}
+	<br>
+	{% if not current_user.is_provider() %}
+		<a href="{{url_for('provider', name=my_booking.provider)}}">Provider: {{ my_booking.provider }}</a><br>
+	{% else %}
+		<p>Provider: {{ my_booking.provider }}</p><br>
+	{% endif %}
+
+	<p>Date: {{ my_booking.date }}</p>
+	<p>Time: {{ my_booking.time }}</p>
+
+	{% if not current_user.is_provider() %}
+		<p>Booking under Patient: {{ my_booking.patient }}</p>
+	{% else %}
+		<a href="{{url_for('get_patient_book', name=my_booking.patient)}}">Booking under Patient: {{ my_booking.patient }}</a>
+	{% endif %}
+
+	<p>Reason for Visit: {{ my_booking.reason }}</p><br>
+	<br>
+	{% endfor %}
+{% else %}
+	<h1>No Valid Bookings</h1>
+{% endif %}
+
+<a href="{{url_for('home')}}">Go Home</a>
+
+{% endblock %}

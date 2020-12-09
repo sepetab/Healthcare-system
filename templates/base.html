@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>HAMS ver: 0.1</title>
+</head>
+
+<body>
+
+<!-- Tab Menu -->
+{% if current_user.is_anonymous %}
+    <a href="{{ url_for('login') }}">Login</a>
+
+{% elif current_user.is_admin() == true %}
+	<a>I AM {{ current_user.username }} - admin: {{ current_user.is_admin() }}</a><br>
+	<a href="{{ url_for('get_profile') }}">My Profile</a><br>
+	<a href="{{ url_for('provider_search') }}">Search Provider</a><br>
+	<a href="{{ url_for('centre_search') }}">Search Centre</a><br>
+	<a href="{{ url_for('get_book') }}">Bookings</a><br>
+	<a href="{{ url_for('server_shutdown') }}">Shutdown</a><br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+{% else %}
+	<a>I AM {{ current_user.username }}</a><br>
+	<a href="{{ url_for('get_profile') }}">My Profile</a><br>
+	<a href="{{ url_for('provider_search') }}">Search Provider</a><br>
+	<a href="{{ url_for('centre_search') }}">Search Centre</a><br>
+	<a href="{{ url_for('get_book') }}">Bookings</a><br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+{% endif %}
+
+<br>
+
+<!-- Main Content Section -->
+{% block body %}{% endblock %}
+
+</body>
+</html>
