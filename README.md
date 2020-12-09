@@ -13,3 +13,9 @@ z5208102 - Aravind Venkateswaran (sepetab)
 z5204814 - Tony Lu (Pyrtex1)
 z5209072 - Arpit Sharma (z5209072)
 ```
+
+Running App
+
+```
+python3 run.py
+```
